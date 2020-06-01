@@ -33,6 +33,10 @@ provider:
       Resource:
         - { 'Fn::GetAtt': ['ExpensesDynamoDBTable', 'Arn'] }
   environment:
+    VERIFY_TOKEN: ${param:verify_token}
+    ACCESS_TOKEN: ${param:access_token}
+    DIALOGFLOW_PROJECT_ID: ${param:project_id}
+    DIALOGFLOW_ACCESS_TOKEN: ${param:dialogflow_access_token}
     EXPENSES_TABLE: ${self:custom.tableName}
 
 package:
@@ -46,14 +50,6 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
-  # getUserExpenses:
-  #   handler: wsgi_handler.handler
-  #   events:
-  #     - http: 'GET /expenses/{proxy+}'
-  # createExpense:
-  #   handler: wsgi_handler.handler
-  #   events:
-  #     - http: 'POST /expenses'
   
 resources:
   Resources:

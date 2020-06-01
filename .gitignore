@@ -5,6 +5,7 @@ build/
 develop-eggs/
 dist/
 downloads/
+.DS_STORE
 eggs/
 .eggs/
 lib/
